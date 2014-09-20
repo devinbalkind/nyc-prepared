@@ -186,7 +186,8 @@ confirmation_email: devin@sarapis.org
 # Make sure to change the coordinates to match your preferred search area.
 #
 # This setting is used in 'app/models/concerns/search.rb'.
-bounds: [[25.7084, -124.085], [48.9084, -67.085]]
+bounds: [[40.551322,-74.171197], [40.972308,-73.646714]]
+  
 
 ###########################################
 #
