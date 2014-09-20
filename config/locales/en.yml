@@ -58,6 +58,6 @@ en:
       no_address: 'A location must have at least one address type.'
 
   titles:
-    brand: "Ohana API"
+    brand: "NYC Prepared"
     admin: "%{brand} Admin"
     developer: "%{brand} Developers"

@@ -72,6 +72,6 @@ Rails.application.routes.draw do
   constraints(SubdomainConstraints.new(subdomain: ENV['DEV_SUBDOMAIN'])) do
     get 'docs' => 'api_docs#index'
   end
-
-  root to: 'home#index'
+  root to: 'admin/dashboard#index'
+  # root to: 'home#index'
 end

@@ -12,7 +12,7 @@
 # app/views/admin/organizations/index.html.haml.
 #
 # Please make sure to change this to your own email address.
-admin_support_email: ohanapi@codeforamerica.org
+admin_support_email: devin@sarapis.org
 
 # An array of email domain names used by the admin interface to determine which
 # users get to access which locations. For convenience, the API allows a client
@@ -160,7 +160,7 @@ valid_service_areas:
 # The email address that confirmation emails are sent from after user signup,
 # for the Developer and Admin portals.
 # Please make sure to change this to your own email address.
-confirmation_email: ohanapi@codeforamerica.org
+confirmation_email: devin@sarapis.org
 
 ###############################
 #
