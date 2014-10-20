@@ -41,3 +41,4 @@ admin3 = Admin.create! :name => 'Devin Balkind',
                      :password => 'sarapis123',
                      :password_confirmation => 'sarapis123'
 admin3.confirm!
+admin3.update_attribute :super_admin, true

@@ -15,7 +15,7 @@ class Service < ActiveRecord::Base
 
   validates :urls, array: { url: true }
 
-  validates :service_areas, array: { service_area: true }
+  # validates :service_areas, array: { service_area: true }
 
   auto_strip_attributes :audience, :description, :eligibility, :fees,
                         :how_to_apply, :name, :short_desc, :wait

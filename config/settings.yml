@@ -142,14 +142,12 @@ languages:
 # These will be the values that admin interface users will choose from when
 # updating a Service's service areas.
 valid_service_areas:
-  - 'Alameda County'
-  - 'Belmont'
-  - 'Burlingame'
-  - 'Colma'
-  - 'Daly City'
-  - 'East Palo Alto'
-  - 'San Mateo County'
-  - 'South San Francisco'
+  - 'Brooklyn'
+  - 'Manhattan'
+  - 'Bronx'
+  - 'Queens'
+  - 'Staten Island'
+  - 'New York State'
 
 ############################
 #
@@ -187,7 +185,7 @@ confirmation_email: devin@sarapis.org
 #
 # This setting is used in 'app/models/concerns/search.rb'.
 bounds: [[40.551322,-74.171197], [40.972308,-73.646714]]
-  
+
 
 ###########################################
 #

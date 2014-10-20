@@ -53,6 +53,7 @@ gem 'ancestry'
 
 gem 'friendly_id', '~> 5.0.3'
 
+  
 group :production, :staging do
   # Heroku recommended
   gem 'rails_12factor'
@@ -62,6 +63,7 @@ group :test, :development do
   gem 'rspec-rails', '~> 3.1.0'
   gem 'factory_girl_rails', '>= 4.2.0'
   gem 'bullet'
+  gem "StreetAddress", github: "derrek/street-address"
 end
 
 group :test do
@@ -81,4 +83,5 @@ group :development do
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'listen', '~> 1.0'
+  gem "pry-rails"
 end

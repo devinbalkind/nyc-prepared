@@ -34,17 +34,17 @@ class Location < ActiveRecord::Base
   # has_many :schedules, dependent: :destroy
   # accepts_nested_attributes_for :schedules
 
-  validates :mail_address,
-            presence: {
-              message: I18n.t('errors.messages.no_address')
-            },
-            unless: proc { |loc| loc.address.present? }
+  # validates :mail_address,
+  #           presence: {
+  #             message: I18n.t('errors.messages.no_address')
+  #           },
+  #           unless: proc { |loc| loc.address.present? }
 
-  validates :address,
-            presence: {
-              message: I18n.t('errors.messages.no_address')
-            },
-            unless: proc { |loc| loc.mail_address.present? }
+  # validates :address,
+  #           presence: {
+  #             message: I18n.t('errors.messages.no_address')
+  #           },
+  #           unless: proc { |loc| loc.mail_address.present? }
 
   validates :description, :organization, :name,
             presence: { message: I18n.t('errors.messages.blank_for_location') }

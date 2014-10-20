@@ -6,16 +6,28 @@ task :setup_db => [
   ]
 
 task :load_data => :environment do
-  file = 'data/sample_data.json'
+  # file = 'data/sample_data.json'
+  file = 'data/data_2.json'
 
   puts "===> Populating the #{Rails.env} DB with #{file}..."
   puts '===> Depending on the size of your data, this can take several minutes...'
 
+  Organization.destroy_all
   File.open(file).each do |line|
     data_item = JSON.parse(line)
-    org = Organization.create!(data_item.except('locations'))
+    begin
+      org = Organization.create!(data_item.except('locations'))
+    rescue Exception => e
+      # What if the org is already created? Find it.
+      if e.message == "Validation failed: Name has already been taken"
+        org = Organization.where(name: data_item.except('locations')['name'] ).first
+      end
+    end
+
+    binding.pry unless org
 
     locs = data_item['locations']
+    binding.pry unless locs
     locs.each do |location|
       location = org.locations.new(location)
       unless location.save

@@ -3,7 +3,7 @@ class UrlValidator < ActiveModel::EachValidator
     return if value.blank?
     default_message = "#{value} #{I18n.t('errors.messages.invalid_url')}"
 
-    unless value =~ %r{\Ahttps?:\/\/([^\s:@]+:[^\s:@]*@)?[A-Za-z\d\-]+(\.[A-Za-z\d\-]+)+\.?(:\d{1,5})?([\/?]\S*)?\z}i
+    unless value =~ %r{\Ahttps?:\/\/(.*)}i
       record.errors[attribute] << (options[:message] || default_message)
     end
   end
