@@ -33,33 +33,12 @@ describe 'PATCH /organizations/:id' do
   it 'returns 422 when attribute is invalid' do
     patch(
       api_organization_url(@org, subdomain: ENV['API_SUBDOMAIN']),
-      urls: ['monfresh.com']
+      website: 'monfresh.com'
     )
     expect(response.status).to eq(422)
     expect(json['message']).to eq('Validation failed for resource.')
     expect(json['errors'].first).
-      to eq('urls' => ['monfresh.com is not a valid URL'])
-  end
-
-  it 'returns 422 when value is String instead of Array' do
-    patch(
-      api_organization_url(@org, subdomain: ENV['API_SUBDOMAIN']),
-      urls: 'http://monfresh.com'
-    )
-    expect(response.status).to eq(422)
-    expect(json['message']).to eq('Validation failed for resource.')
-    expect(json['error']).
-      to eq('Attribute was supposed to be an Array, but was a String: "http://monfresh.com".')
-  end
-
-  it 'returns 422 when urls is empty String' do
-    patch(
-      api_organization_url(@org, subdomain: ENV['API_SUBDOMAIN']),
-      urls: ''
-    )
-    expect(response.status).to eq(422)
-    expect(json['message']).to eq('Validation failed for resource.')
-    expect(json['error']).to include('Attribute was supposed to be an Array')
+      to eq('website' => ['monfresh.com is not a valid URL'])
   end
 
   it 'returns 422 when required attribute is missing' do
@@ -80,10 +59,10 @@ describe 'PATCH /organizations/:id' do
     expect(response.status).to eq(404)
     expect(json['message']).to eq('The requested resource could not be found.')
     expect(json['documentation_url']).
-      to eq(docs_url(subdomain: ENV['API_SUBDOMAIN']))
+      to eq('http://codeforamerica.github.io/ohana-api-docs/')
   end
 
-  it 'updates the search index when organization changes' do
+  it 'updates the search index when organization name changes' do
     patch(
       api_organization_url(@org, subdomain: ENV['API_SUBDOMAIN']),
       name: 'Code for America'

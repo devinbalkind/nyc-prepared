@@ -47,6 +47,13 @@ describe 'GET /organizations/:id' do
     it 'returns a successful status code' do
       expect(response).to have_http_status(200)
     end
+
+    it 'includes the full representation' do
+      expect(json.keys).to eq %w(id accreditations alternate_name
+                                 date_incorporated description email
+                                 funding_sources licenses name website
+                                 slug url locations_url contacts phones)
+    end
   end
 
   context 'with invalid id' do
@@ -79,7 +86,7 @@ describe 'GET /organizations/:id' do
 
     it 'returns nil fields when visiting one organization' do
       get api_organization_url(@org, subdomain: ENV['API_SUBDOMAIN'])
-      expect(json.keys).to include('urls')
+      expect(json.keys).to include('website')
     end
   end
 end

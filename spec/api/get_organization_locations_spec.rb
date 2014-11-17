@@ -8,20 +8,18 @@ describe 'GET /organizations/:organization_id/locations' do
         accessibility: %w(restroom),
         admin_emails: %w(foo@bar.com),
         description: 'testing 1 2 3',
-        emails: %w(foo@bar.com),
-        hours: 'Monday-Friday 10am-6pm',
+        email: 'foo@bar.com',
         languages: %w(french, arabic),
         latitude: 37.583939,
         longitude: -122.3715745,
         name: 'new location',
         short_desc: 'short_desc',
         transportation: 'BART stops 1 block away',
-        urls: %w(http://monfresh.com),
+        website: 'http://monfresh.com',
         address_attributes: attributes_for(:address)
       }
       @location = @org.locations.create!(attrs)
       @location.contacts.create!(attributes_for(:contact))
-      @location.faxes.create!(attributes_for(:fax))
       @location.phones.create!(attributes_for(:phone))
       @location.contacts.create!(attributes_for(:contact))
       @location.services.create!(attributes_for(:service))
@@ -67,7 +65,7 @@ describe 'GET /organizations/:organization_id/locations' do
     end
 
     it 'includes the location address attribute in the serialization' do
-      expect(json.first['address']['street']).to eq(@location.address.street)
+      expect(json.first['address']['street_1']).to eq(@location.address.street_1)
     end
 
     xit 'includes the location mail_address attribute in the serialization' do
@@ -88,26 +86,6 @@ describe 'GET /organizations/:organization_id/locations' do
         to eq(api_location_url(@location, subdomain: ENV['API_SUBDOMAIN']))
     end
 
-    it 'includes the contacts_url attribute in the serialization' do
-      expect(json.first['contacts_url']).
-        to eq(api_location_contacts_url(@location))
-    end
-
-    it 'includes the faxes_url attribute in the serialization' do
-      expect(json.first['faxes_url']).
-        to eq(api_location_faxes_url(@location))
-    end
-
-    xit 'includes the phones_url attribute in the serialization' do
-      expect(json.first['phones_url']).
-        to eq(api_location_phones_url(@location))
-    end
-
-    it 'includes the services_url attribute in the serialization' do
-      expect(json.first['services_url']).
-        to eq(api_location_services_url(@location))
-    end
-
     it "doesn't include the location accessibility attribute" do
       expect(json.first.keys).to_not include('accessibility')
     end
@@ -120,8 +98,8 @@ describe 'GET /organizations/:organization_id/locations' do
       expect(json.first.keys).to include('coordinates')
     end
 
-    it "doesn't include the location emails attribute" do
-      expect(json.first.keys).to_not include('emails')
+    it "doesn't include the location email attribute" do
+      expect(json.first.keys).to_not include('email')
     end
 
     it "doesn't include the location hours attribute" do
@@ -140,16 +118,12 @@ describe 'GET /organizations/:organization_id/locations' do
       expect(json.first.keys).to_not include('transportation')
     end
 
-    it 'includes the location urls attribute' do
-      expect(json.first.keys).to include('urls')
+    it 'includes the location website attribute' do
+      expect(json.first.keys).to include('website')
     end
 
     it "doesn't include the location contacts attribute" do
       expect(json.first.keys).to_not include('contacts')
-    end
-
-    it "doesn't include the location faxes attribute" do
-      expect(json.first.keys).to_not include('faxes')
     end
 
     it 'includes the location phones attribute' do

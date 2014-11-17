@@ -1,12 +1,12 @@
 source 'https://rubygems.org'
 
-ruby '2.1.2'
+ruby '2.1.3'
 gem 'rails', '~> 4.1.1'
 
 gem 'pg'
 
 gem 'sass-rails',   '~> 4.0.3'
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails', '~> 4.1.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'bootstrap-sass', '~> 3.2.0'
 
@@ -21,7 +21,7 @@ gem 'haml-rails', '~> 0.5.3'
 gem 'select2-rails'
 
 # Server for deployment
-gem 'passenger'
+gem 'unicorn'
 
 # Geocoding
 gem 'geocoder'
@@ -33,11 +33,11 @@ gem 'rack-cors', require: 'rack/cors'
 gem 'kaminari'
 gem 'active_model_serializers', '~> 0.8.0'
 
-# Production Monitoring
-gem 'rack-timeout'
-
 # Authentication
-gem 'devise'
+gem 'devise', '~> 3.4'
+
+# Authorization
+gem 'pundit'
 
 gem 'auto_strip_attributes', '~> 2.0'
 gem 'enumerize'
@@ -53,7 +53,9 @@ gem 'ancestry'
 
 gem 'friendly_id', '~> 5.0.3'
 
-  
+
+gem 'rack-timeout'
+
 group :production, :staging do
   # Heroku recommended
   gem 'rails_12factor'
