@@ -9,6 +9,6 @@ class Category < ActiveRecord::Base
   validates :taxonomy_id,
             uniqueness: {
               message: I18n.t('errors.messages.duplicate_taxonomy_id') }
-
+              
   has_ancestry
 end

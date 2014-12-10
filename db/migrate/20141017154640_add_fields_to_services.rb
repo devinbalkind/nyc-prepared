@@ -8,9 +8,9 @@ class AddFieldsToServices < ActiveRecord::Migration
     add_column :services, :status, :string
     add_column :services, :website, :string
 
-    change_column_null :services, :how_to_apply, false
-    change_column_null :services, :description, false
-
+    # change_column_null :services, :how_to_apply, false
+    # change_column_null :services, :description, false
+    
     remove_column :services, :short_desc, :string
     remove_column :services, :urls, :string
 
