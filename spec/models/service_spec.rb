@@ -21,21 +21,20 @@ describe Service do
   it { is_expected.to allow_mass_assignment_of(:service_areas) }
   it { is_expected.to allow_mass_assignment_of(:status) }
   it { is_expected.to allow_mass_assignment_of(:website) }
-  it { is_expected.to allow_mass_assignment_of(:wait) }
+  it { is_expected.to allow_mass_assignment_of(:wait_time) }
 
   it { is_expected.to belong_to(:location).touch(true) }
   it { is_expected.to belong_to(:program) }
 
   # This is no longer working in Rails 4.1.2. I opened an issue:
   # https://github.com/thoughtbot/shoulda-matchers/issues/549
-  xit { is_expected.to have_and_belong_to_many(:categories).order('oe_id asc') }
+  xit { is_expected.to have_and_belong_to_many(:categories).order('taxonomy_id asc') }
 
   it { is_expected.to have_many(:regular_schedules).dependent(:destroy) }
   it { is_expected.to accept_nested_attributes_for(:regular_schedules).allow_destroy(true) }
   it { is_expected.to have_many(:holiday_schedules).dependent(:destroy) }
   it { is_expected.to accept_nested_attributes_for(:holiday_schedules).allow_destroy(true) }
   it { is_expected.to have_many(:contacts).dependent(:destroy) }
-  it { is_expected.to accept_nested_attributes_for(:contacts) }
   it { is_expected.to have_many(:phones).dependent(:destroy) }
   it { is_expected.to accept_nested_attributes_for(:phones).allow_destroy(true) }
 
@@ -111,7 +110,7 @@ describe Service do
       expect(service.service_areas).to eq(['Belmont'])
       expect(service.status).to eq('active')
       expect(service.website).to eq('http://www.monfresh.com')
-      expect(service.wait).to eq('2 days')
+      expect(service.wait_time).to eq('2 days')
     end
   end
 end

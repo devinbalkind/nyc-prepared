@@ -26,6 +26,25 @@ accepted_payments:
 # Please make sure to change this to your own email address.
 admin_support_email: devin@sarapis.org
 
+# These will be the values that admin interface users will choose from when
+# updating an Organization's or Service's funding sources.
+# The list below should remain in alphabetical order.
+funding_sources:
+- 'City'
+- 'County'
+- 'Donations'
+- 'Dues'
+- 'Endowments'
+- 'Federal'
+- 'Fees'
+- 'Fundraising'
+- 'Grants'
+- 'Sales'
+- 'Sponsorships'
+- 'State'
+- 'Taxes'
+- 'United Way'
+
 # An array of email domain names used by the admin interface to determine which
 # users get to access which locations. For convenience, the API allows a client
 # to retrieve locations that match a particular domain name. This means that
@@ -171,6 +190,18 @@ valid_service_areas:
 
 ############################
 #
+# DATE SETTINGS
+#
+############################
+#
+# The date format to use for the Organization `date_incorporated` field,
+# and for the Holiday Schedule `start_date` and `end_date` fields.
+# The default format is the US-style month/day/year. To use the day/month
+# style, change the value below to '%d/%m/'.
+date_format: '%m/%d/'
+
+############################
+#
 # EMAIL DELIVERY SETTINGS
 #
 ############################
@@ -221,6 +252,10 @@ test:
 
   confirmation_email: registration@ohanapi.org
 
+  funding_sources:
+  - 'State'
+  - 'County'
+
   languages:
   - 'Arabic'
   - 'French'
@@ -233,3 +268,5 @@ test:
   valid_service_areas:
   - 'Atherton'
   - 'Belmont'
+
+  date_format: '%m/%d/'

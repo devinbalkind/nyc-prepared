@@ -31,10 +31,8 @@ describe Location do
   it { is_expected.to have_many(:holiday_schedules).dependent(:destroy) }
 
   it { is_expected.to accept_nested_attributes_for(:address).allow_destroy(true) }
-  it { is_expected.to accept_nested_attributes_for(:contacts).allow_destroy(true) }
   it { is_expected.to accept_nested_attributes_for(:mail_address).allow_destroy(true) }
   it { is_expected.to accept_nested_attributes_for(:phones).allow_destroy(true) }
-  it { is_expected.to accept_nested_attributes_for(:services).allow_destroy(true) }
   it { is_expected.to accept_nested_attributes_for(:regular_schedules).allow_destroy(true) }
   it { is_expected.to accept_nested_attributes_for(:holiday_schedules).allow_destroy(true) }
 
@@ -120,7 +118,7 @@ describe Location do
   it { is_expected.to respond_to(:mail_address_city) }
   describe '#mail_address_city' do
     it 'returns mail_address.city' do
-      loc = build(:no_address)
+      loc = build(:mail_address).location
       expect(loc.mail_address_city).to eq(loc.mail_address.city)
     end
   end
@@ -149,9 +147,9 @@ describe Location do
 
     context 'when mail_address is present and name is taken' do
       it 'creates a new slug based on mail_address city' do
-        new_loc = create(:no_address)
+        new_loc = create(:mail_address).location
         new_loc.update_attributes!(name: 'VRS Services')
-        expect(new_loc.reload.slug).to eq('vrs-services-la-honda')
+        expect(new_loc.reload.slug).to eq('vrs-services-belmont')
       end
     end
 
