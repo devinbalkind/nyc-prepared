@@ -1,11 +1,6 @@
 class CategoryPresenter < Struct.new(:row)
   def to_category
-    begin
-      return parent_category(row).children.create(row) if row[:parent_id].present?
-    rescue Exception => e
-      binding.pry
-    end
-
+    return parent_category(row).children.create(row) if row[:parent_id].present?
     Category.create(row)
   end
 
