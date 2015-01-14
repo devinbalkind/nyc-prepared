@@ -73,7 +73,7 @@
     },
     "ENABLE_HTTPS": {
       "description": "(required) When using the default Heroku domain setup (http://app-name.herokuapp.com), you can take advantage of SSL for free.",
-      "value": true,
+      "value": "true",
       "required": true
     }
   },
