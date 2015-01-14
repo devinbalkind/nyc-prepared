@@ -75,7 +75,7 @@ class WelcomeController < ApplicationController
   private
     def check_token
       token = WelcomeToken.first
-
+      
       path = if token.blank?
         token = WelcomeToken.create
         welcome_path(code: token.code)

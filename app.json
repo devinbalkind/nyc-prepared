@@ -65,6 +65,16 @@
     "MAILER_URL": {
       "description": "(required) This is the URL of your app. It must have the format http://APPNAME.herokuapp.com/",
       "required": true
+    },
+    "TLD_LENGTH": {
+      "description": "(required) When using the default Heroku domain setup (http://app-name.herokuapp.com), TLD_LENGTH should be set to '2'. Once you're ready to deploy with a custom domain name (like 'smc-connect.org'), you will need to set TLD_LENGTH to the number of dots in your top-level domain name, which will most likely be '1', but if you are using '.co.uk' for example, then you should set it to '2'.",
+      "value": "2",
+      "required": true
+    },
+    "ENABLE_HTTPS": {
+      "description": "(required) When using the default Heroku domain setup (http://app-name.herokuapp.com), you can take advantage of SSL for free.",
+      "value": true,
+      "required": true
     }
   },
   "addons": [
