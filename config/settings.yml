@@ -180,13 +180,13 @@ required_documents:
 #
 # These will be the values that admin interface users will choose from when
 # updating a Service's service areas.
-valid_service_areas:
-  - 'Brooklyn'
-  - 'Manhattan'
-  - 'Bronx'
-  - 'Queens'
-  - 'Staten Island'
-  - 'New York State'
+# valid_service_areas:
+#   - 'Brooklyn'
+#   - 'Manhattan'
+#   - 'Bronx'
+#   - 'Queens'
+#   - 'Staten Island'
+#   - 'New York State'
 
 ############################
 #
